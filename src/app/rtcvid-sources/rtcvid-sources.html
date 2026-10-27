@@ -1,0 +1,26 @@
+<p>rtcvid-sources works!</p>
+<video class="hidden" style="display: hidden !important;" #inputstream autoplay [playsInline]="true"></video>
+<canvas #canvas class="max-w-120" width="640" height="480"></canvas>
+
+@if(permissions === true){
+} @else {
+
+<button (click)="updatePerms()">Update Permissions</button>
+
+}
+<hr>
+
+@for(msgStruct of messages; track $index){
+<p class="{{msgStruct.isSelf ? 'text-right':''}} ">{{msgStruct.msg}}</p>
+}
+
+@if(remoteConnection){
+
+<textarea (change)="setMessage($event)"></textarea>
+<button (click)="sendMessage()">Send</button>
+
+
+} @else {
+<button (click)="connectPeers()">Connect</button>
+
+}

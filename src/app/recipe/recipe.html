@@ -1,0 +1,27 @@
+<!-- <p>recipe works!</p> -->
+<select (change)="handleChange($event)">
+
+    @for(key of recipeNames; track key){
+    <option value="{{key}}">
+        {{key}}
+    </option>
+
+    }
+</select>
+
+@if(open){
+<h1>{{active()}}</h1>
+<hr>
+<ul>@for(ingredient of getIngredients(); track $index){
+    <li>{{ingredient.measurement_multiple * counterService.count()}} of {{ingredient.name}}</li>
+    }
+</ul>
+
+<ol>
+    @for(step of getSteps(); track $index){
+    <li>{{step}}</li>
+    }
+</ol>
+
+
+}
